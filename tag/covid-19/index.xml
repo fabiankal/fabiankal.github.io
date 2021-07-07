@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects | Fabian Kalleitner</title>
-    <link>https://fabiankal.github.io/project/</link>
-      <atom:link href="https://fabiankal.github.io/project/index.xml" rel="self" type="application/rss+xml" />
-    <description>Projects</description>
+    <title>COVID-19 | Fabian Kalleitner</title>
+    <link>https://fabiankal.github.io/tag/covid-19/</link>
+      <atom:link href="https://fabiankal.github.io/tag/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <description>COVID-19</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
-      <title>Projects</title>
-      <link>https://fabiankal.github.io/project/</link>
+      <title>COVID-19</title>
+      <link>https://fabiankal.github.io/tag/covid-19/</link>
     </image>
     
     <item>
