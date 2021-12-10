@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>&#34;Golm&#34; | Fabian Kalleitner</title>
+    <link>https://fabiankal.github.io/tag/golm/</link>
+      <atom:link href="https://fabiankal.github.io/tag/golm/index.xml" rel="self" type="application/rss+xml" />
+    <description>&#34;Golm&#34;</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
+      <title>&#34;Golm&#34;</title>
+      <link>https://fabiankal.github.io/tag/golm/</link>
+    </image>
+    
+    <item>
+      <title>Das Einkommensverständnis in Österreich. Wissen und Zustimmung zur progressiven Besteuerung</title>
+      <link>https://fabiankal.github.io/publication/kalleitner-2018/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2018/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

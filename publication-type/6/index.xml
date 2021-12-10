@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>6 | Fabian Kalleitner</title>
+    <link>https://fabiankal.github.io/publication-type/6/</link>
+      <atom:link href="https://fabiankal.github.io/publication-type/6/index.xml" rel="self" type="application/rss+xml" />
+    <description>6</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
+      <title>6</title>
+      <link>https://fabiankal.github.io/publication-type/6/</link>
+    </image>
+    
+    <item>
+      <title>Wirtschaft</title>
+      <link>https://fabiankal.github.io/publication/kittel-2020-a/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kittel-2020-a/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zeugnisse des Umbruchs und der Kontinuität: Staatswissenschaftliche Dissertationen und deren Beurteilungen 1938–1948</title>
+      <link>https://fabiankal.github.io/publication/kalleitner-2019/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Das Einkommensverständnis in Österreich. Wissen und Zustimmung zur progressiven Besteuerung</title>
+      <link>https://fabiankal.github.io/publication/kalleitner-2018/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2018/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
