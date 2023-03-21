@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>&#34;Europe&#34; | Fabian Kalleitner</title>
+    <title>Europe | Fabian Kalleitner</title>
     <link>https://fabiankal.github.io/tag/europe/</link>
       <atom:link href="https://fabiankal.github.io/tag/europe/index.xml" rel="self" type="application/rss+xml" />
-    <description>&#34;Europe&#34;</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <description>Europe</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Tue, 21 Feb 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
-      <title>&#34;Europe&#34;</title>
+      <title>Europe</title>
       <link>https://fabiankal.github.io/tag/europe/</link>
     </image>
+    
+    <item>
+      <title>The Inequity Z: Income Fairness Perceptions in Europe Across the Income Distribution</title>
+      <link>https://fabiankal.github.io/post/inequityz/</link>
+      <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/post/inequityz/</guid>
+      <description>&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;Using data from the European Social Survey, this visualization examines income fairness evaluations of 17,605 respondents from 28 countries. Respondents evaluated the fairness of their own income as well as the fairness of the income of the top and bottom income decile in their country. Depicted on a single graph, these income fairness evaluations take on a Z-shaped form, which we call the &amp;ldquo;inequity Z&amp;rdquo;. The inequity Z reveals an extensive level of consensus within each country regarding the degree of unfairness of top and bottom incomes. With rising income, respondents consistently judge their own income to be less unfair. Across countries, the gap in fairness ratings between top and bottom incomes rises with income inequality. Perceived underreward of bottom incomes is more pronounced in countries where bottom incomes are objectively lower. Thus, our visualization suggests, when confronted with information about actual income levels, perceived inequity increases with inequality.&lt;/p&gt;
+&lt;h2 id=&#34;full-text&#34;&gt;Full Text&lt;/h2&gt;
+&lt;p&gt;The original full text including the supplementary appendix can be accessed here &lt;a href=&#34;https://fabiankal.github.io/post/inequity_Z.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Link&lt;/strong&gt;&lt;/a&gt; the publication can be found @ &lt;a href=&#34;&#34;&gt;&lt;strong&gt;SOCIUS&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>The Transmission of Work Centrality within the Family in a Cross-Regional Perspective</title>

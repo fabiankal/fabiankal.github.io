@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>inequality | Fabian Kalleitner</title>
-    <link>https://fabiankal.github.io/tag/inequality/</link>
-      <atom:link href="https://fabiankal.github.io/tag/inequality/index.xml" rel="self" type="application/rss+xml" />
-    <description>inequality</description>
+    <title>Publications | Fabian Kalleitner</title>
+    <link>https://fabiankal.github.io/category/publications/</link>
+      <atom:link href="https://fabiankal.github.io/category/publications/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publications</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Tue, 21 Feb 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
-      <title>inequality</title>
-      <link>https://fabiankal.github.io/tag/inequality/</link>
+      <title>Publications</title>
+      <link>https://fabiankal.github.io/category/publications/</link>
     </image>
     
     <item>
@@ -22,14 +22,6 @@
 &lt;h2 id=&#34;full-text&#34;&gt;Full Text&lt;/h2&gt;
 &lt;p&gt;The original full text including the supplementary appendix can be accessed here &lt;a href=&#34;https://fabiankal.github.io/post/inequity_Z.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Link&lt;/strong&gt;&lt;/a&gt; the publication can be found @ &lt;a href=&#34;&#34;&gt;&lt;strong&gt;SOCIUS&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Subjective Inequity Aversion: Unfair Inequality, Subjective Well-Being, and Preferences for Redistribution</title>
-      <link>https://fabiankal.github.io/publication/bohmann-2023/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/bohmann-2023/</guid>
-      <description></description>
     </item>
     
   </channel>
