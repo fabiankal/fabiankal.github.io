@@ -5,7 +5,7 @@
     <link>https://fabiankal.github.io/tag/covid-19/</link>
       <atom:link href="https://fabiankal.github.io/tag/covid-19/index.xml" rel="self" type="application/rss+xml" />
     <description>COVID-19</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2023 Fabian Kalleitner</copyright><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
       <title>COVID-19</title>
@@ -310,77 +310,6 @@
 
 
 
-  
-    
-
-&lt;div class=&#34;pub-list-item&#34; style=&#34;margin-bottom: 1rem&#34;&gt;
-  &lt;i class=&#34;far fa-file-alt pub-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;
-
-  
-  
-
-  &lt;span class=&#34;article-metadata li-cite-author&#34;&gt;
-    
-
-  &lt;span &gt;
-      Fabian Kalleitner&lt;/span&gt;, &lt;span &gt;
-      David W. Schiestl&lt;/span&gt;, &lt;span &gt;
-      Georg Heiler&lt;/span&gt;
-  &lt;/span&gt;
-  (2021).
-  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2021/&#34;&gt;Varieties of mobility measures: Comparing survey and mobile phone data during the COVID-19 pandemic&lt;/a&gt;.
-  
-  &lt;p&gt;
-
-
-
-
-
-
-
-
-  
-    
-  
-
-
-
-&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://osf.io/preprints/socarxiv/r78fk/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
-  PDF
-&lt;/a&gt;
-
-
-
-&lt;a href=&#34;#&#34; class=&#34;btn btn-outline-primary btn-page-header btn-sm js-cite-modal&#34;
-        data-filename=&#34;/publication/kalleitner-2021/cite.bib&#34;&gt;
-  Cite
-&lt;/a&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://doi.org/10.31235/osf.io/r78fk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
-  DOI
-&lt;/a&gt;
-
-
-&lt;/p&gt;
-
-  
-  
-&lt;/div&gt;
-
-  
-
 &lt;/p&gt;
 &lt;p&gt;Visit the project website @ &lt;a href=&#34;https://viecer.univie.ac.at/coronapanel/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;viecer.univie.ac.at/coronapanel/&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -391,22 +320,6 @@
       <link>https://fabiankal.github.io/publication/kittel-2021-b/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       <guid>https://fabiankal.github.io/publication/kittel-2021-b/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Varieties of mobility measures: Comparing survey and mobile phone data during the COVID-19 pandemic</title>
-      <link>https://fabiankal.github.io/publication/kalleitner-2021/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kalleitner-2021/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Avoiding a public health dilemma: Social norms and trust facilitate preventive behaviour if individuals perceive low COVID-19 health risks</title>
-      <link>https://fabiankal.github.io/publication/kittel-2021/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kittel-2021/</guid>
       <description></description>
     </item>
     

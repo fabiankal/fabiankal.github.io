@@ -5,7 +5,7 @@
     <link>https://fabiankal.github.io/project/</link>
       <atom:link href="https://fabiankal.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Thu, 04 Nov 2021 18:41:55 +0100</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2023 Fabian Kalleitner</copyright><lastBuildDate>Thu, 04 Nov 2021 18:41:55 +0100</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
@@ -17,7 +17,87 @@
       <link>https://fabiankal.github.io/project/dissertation/</link>
       <pubDate>Thu, 08 Jul 2021 12:30:19 +0200</pubDate>
       <guid>https://fabiankal.github.io/project/dissertation/</guid>
-      <description>&lt;p&gt;When do people want more redistributive taxes? Although several countries in Europe have experienced rising levels of inequality in the last couple of decades, public demands for redistributive taxes remained on similar levels or even decreased. In this dissertation, I argue that we can understand this phenomenon by acknowledging the role of limited public information about inequality and tax rates and the importance of fairness heuristics in enabling individuals to demand redistribution by taxes. Utilizing data from the European Social Survey, experimental web surveys conducted in Austria, and a laboratory experiment, this dissertation tests these theoretical arguments empirically.&lt;/p&gt;
+      <description>&lt;p&gt;When do people want more redistributive taxes? Although several countries in Europe have experienced rising levels of inequality in the last couple of decades, public demands for redistributive taxes remained on similar levels or even decreased. In this dissertation, I argue that we can understand this phenomenon by acknowledging the role of limited public information about inequality and tax rates and the importance of fairness heuristics in enabling individuals to demand redistribution by taxes. Utilizing data from the European Social Survey and experimental web surveys conducted in Austria, this dissertation tests these theoretical arguments empirically.&lt;/p&gt;
+&lt;h2 id=&#34;publications-so-far&#34;&gt;Publications (so far)&lt;/h2&gt;
+
+
+
+
+
+
+
+  
+    
+
+&lt;div class=&#34;pub-list-item&#34; style=&#34;margin-bottom: 1rem&#34;&gt;
+  &lt;i class=&#34;far fa-file-alt pub-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;
+
+  
+  
+
+  &lt;span class=&#34;article-metadata li-cite-author&#34;&gt;
+    
+
+  &lt;span &gt;
+      Fabian Kalleitner&lt;/span&gt;, &lt;span &gt;
+      Licia Bobzien&lt;/span&gt;
+  &lt;/span&gt;
+  (2023).
+  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2023-a/&#34;&gt;Taxed Fairly? How Differences in Perception Shape Attitudes towards Progressive Taxation&lt;/a&gt;.
+  &lt;em&gt;European Sociological Review&lt;/em&gt;.
+  
+  &lt;p&gt;
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://doi.org/10.1093/esr/jcad060&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  PDF
+&lt;/a&gt;
+
+
+
+&lt;a href=&#34;#&#34; class=&#34;btn btn-outline-primary btn-page-header btn-sm js-cite-modal&#34;
+        data-filename=&#34;/publication/kalleitner-2023-a/cite.bib&#34;&gt;
+  Cite
+&lt;/a&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://doi.org/10.1093/esr/jcad060&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  DOI
+&lt;/a&gt;
+
+
+&lt;/p&gt;
+
+  
+  
+&lt;/div&gt;
+
+  
+
+
 </description>
     </item>
     
@@ -319,77 +399,6 @@
 
 
 
-  
-    
-
-&lt;div class=&#34;pub-list-item&#34; style=&#34;margin-bottom: 1rem&#34;&gt;
-  &lt;i class=&#34;far fa-file-alt pub-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;
-
-  
-  
-
-  &lt;span class=&#34;article-metadata li-cite-author&#34;&gt;
-    
-
-  &lt;span &gt;
-      Fabian Kalleitner&lt;/span&gt;, &lt;span &gt;
-      David W. Schiestl&lt;/span&gt;, &lt;span &gt;
-      Georg Heiler&lt;/span&gt;
-  &lt;/span&gt;
-  (2021).
-  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2021/&#34;&gt;Varieties of mobility measures: Comparing survey and mobile phone data during the COVID-19 pandemic&lt;/a&gt;.
-  
-  &lt;p&gt;
-
-
-
-
-
-
-
-
-  
-    
-  
-
-
-
-&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://osf.io/preprints/socarxiv/r78fk/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
-  PDF
-&lt;/a&gt;
-
-
-
-&lt;a href=&#34;#&#34; class=&#34;btn btn-outline-primary btn-page-header btn-sm js-cite-modal&#34;
-        data-filename=&#34;/publication/kalleitner-2021/cite.bib&#34;&gt;
-  Cite
-&lt;/a&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://doi.org/10.31235/osf.io/r78fk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
-  DOI
-&lt;/a&gt;
-
-
-&lt;/p&gt;
-
-  
-  
-&lt;/div&gt;
-
-  
-
 &lt;/p&gt;
 &lt;p&gt;Visit the project website @ &lt;a href=&#34;https://viecer.univie.ac.at/coronapanel/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;viecer.univie.ac.at/coronapanel/&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -403,7 +412,7 @@
       <description>&lt;h2 id=&#34;short-project-description&#34;&gt;Short project description&lt;/h2&gt;
 &lt;p&gt;The project JUSAW (Jung und auf der Suche nach Arbeit in Wien = Young and searching a job in Vienna) existed from 2014 until 2018. It was lead by Nadia Steiber, Monika Mühlböck, and Bernhard Kittel and cooperated with the Austrian ministry of Labour, Social Affairs and Consumer Protection (BMASK) and the Austrian Public Employment Service (AMS). Project members included Stefan Vogtenhuber, Stefanie Stadlober, and myself. The project aimed to &lt;strong&gt;study the heterogeneous consequences of becoming unemployed in an early age&lt;/strong&gt;. Study results have been featured in several Austrian media outlets(e.g. &lt;a href=&#34;https://fm4.orf.at/stories/2895430/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@FM4&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;The project consisted of three main parts: 1) An initial quantitative survey at the beginning of an unemployment spell (N~1500) combined with a accompanying qualitative study investigating the subjective experience of 36 unemployed young adults in Vienna. 2) A follow up survey one year later of those participating in wave one. This panel survey data was also merged with governmental registry data about details in changes in the labor market status in the past year (this data also included information on registered attempts to apply for a job or participation in state-aided training programmes). 3) A field experiment featuring a small motivational nudge delivered via E-Mail to test the effect of information and externally induced self-reflection on job uptake and unemployment duration.&lt;/p&gt;
-&lt;p&gt;I joined the project 2018 and had the opportunity to work on the survey and video that contained the main treatments of the field experiment of module 3 of the project. We developed a survey using &lt;a href=&#34;https://www.soscisurvey.de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;soscisurvey.de&lt;/a&gt; presenting either a short video, a survey or both to roughly 20.000 individuals who got recently unemployed in Austria. Invitations to participate in the survey or to watch the short informational video with tips to improve job search strategies have been send via E-Mail. As the content (survey/video/both) was included in the invitation mail and treatment allocation was randomized we could &lt;strong&gt;test whether a nonmaterial incentive in form of a short video would improve survey response rates or reduces response bias&lt;/strong&gt; - &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2020/&#34;&gt;it does not&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I joined the project 2018 and had the opportunity to work on the survey and video that contained the main treatments of the field experiment of module 3 of the project. We developed a survey using &lt;a href=&#34;https://www.soscisurvey.de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;soscisurvey.de&lt;/a&gt; presenting either a short video, a survey or both to roughly 20.000 individuals who got recently unemployed in Austria. Invitations to participate in the survey or to watch the short informational video with tips to improve job search strategies have been send via E-Mail. As the content (survey/video/both) was included in the invitation mail and treatment allocation was randomized we could &lt;strong&gt;test whether a nonmaterial incentive in form of a short video would improve survey response rates or reduces response bias&lt;/strong&gt; - &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2022/&#34;&gt;it does not&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Six months after sending out the interventions we linked response data to job registry data to test the effect of the treatments. We find that the &lt;strong&gt;treatment combining reflection and information reduces job search duration of young unemployed people with a low level of formal education&lt;/strong&gt;. The study has been featured as &lt;a href=&#34;https://www.registerforschung.at/erfolgsbeispiele/beispiel_04/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;prime example&lt;/a&gt; of studies using governmental registry data in Austria. That&amp;rsquo;s also the source of the following nice looking graph featuring some results of our study. A static english version can be found in our &lt;a href=&#34;https://fabiankal.github.io/publication/muhlbock-2021/&#34;&gt;paper&lt;/a&gt;.&lt;/p&gt;
 &lt;iframe title=&#34;Kaplan–Meier estimator of the duration of the unemployment spell for individuals with a low level of education (Intention to Treat).&#34; aria-label=&#34;Interactive line chart&#34; id=&#34;datawrapper-chart-Wa2Ci&#34; src=&#34;//datawrapper.dwcdn.net/ihhuY/5/&#34; scrolling=&#34;no&#34; frameborder=&#34;0&#34; style=&#34;width: 0; min-width: 100% !important; border: none;&#34; height=&#34;578&#34;&gt;&lt;/iframe&gt;
 &lt;script type=&#34;text/javascript&#34;&gt;!function(){&#34;use strict&#34;;window.addEventListener(&#34;message&#34;,(function(e){if(void 0!==e.data[&#34;datawrapper-height&#34;]){var t=document.querySelectorAll(&#34;iframe&#34;);for(var a in e.data[&#34;datawrapper-height&#34;])for(var r=0;r&lt;t.length;r++){if(t[r].contentWindow===e.source)t[r].style.height=e.data[&#34;datawrapper-height&#34;][a]+&#34;px&#34;}}}))}();&lt;/script&gt;
@@ -432,8 +441,8 @@
       Monika Mühlböck&lt;/span&gt;, &lt;span &gt;
       Bernhard Kittel&lt;/span&gt;
   &lt;/span&gt;
-  (2020).
-  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2020/&#34;&gt;What’s the Benefit of a Video? The Effect of Nonmaterial Incentives on Response Rate and Bias in Web Surveys&lt;/a&gt;.
+  (2022).
+  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2022/&#34;&gt;What’s the Benefit of a Video? The Effect of Nonmaterial Incentives on Response Rate and Bias in Web Surveys&lt;/a&gt;.
   &lt;em&gt;Social Science Computer Review&lt;/em&gt;.
   
   &lt;p&gt;
@@ -458,7 +467,7 @@
 
 
 &lt;a href=&#34;#&#34; class=&#34;btn btn-outline-primary btn-page-header btn-sm js-cite-modal&#34;
-        data-filename=&#34;/publication/kalleitner-2020/cite.bib&#34;&gt;
+        data-filename=&#34;/publication/kalleitner-2022/cite.bib&#34;&gt;
   Cite
 &lt;/a&gt;
 

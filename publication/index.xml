@@ -5,12 +5,20 @@
     <link>https://fabiankal.github.io/publication/</link>
       <atom:link href="https://fabiankal.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2021 Fabian Kalleitner</copyright><lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2023 Fabian Kalleitner</copyright><lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
       <title>Publications</title>
       <link>https://fabiankal.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Taxed Fairly? How Differences in Perception Shape Attitudes towards Progressive Taxation</title>
+      <link>https://fabiankal.github.io/publication/kalleitner-2023-a/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2023-a/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Subjective Inequity Aversion: Unfair Inequality, Subjective Well-Being, and Preferences for Redistribution</title>
@@ -21,10 +29,18 @@
     </item>
     
     <item>
+      <title>The Inequity Z: Income Fairness Perceptions in Europe across the Income Distribution</title>
+      <link>https://fabiankal.github.io/publication/kalleitner-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Varieties of Mobility Measures: Comparing Survey and Mobile Phone Data during the COVID-19 Pandemic</title>
-      <link>https://fabiankal.github.io/publication/kalleitner-2022-a/</link>
+      <link>https://fabiankal.github.io/publication/kalleitner-2022-b/</link>
       <pubDate>Thu, 01 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kalleitner-2022-a/</guid>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2022-b/</guid>
       <description></description>
     </item>
     
@@ -53,14 +69,6 @@
     </item>
     
     <item>
-      <title>Varieties of mobility measures: Comparing survey and mobile phone data during the COVID-19 pandemic</title>
-      <link>https://fabiankal.github.io/publication/kalleitner-2021/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kalleitner-2021/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Information, reflection, and successful job search: A labor market policy experiment</title>
       <link>https://fabiankal.github.io/publication/muhlbock-2021/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
@@ -85,26 +93,10 @@
     </item>
     
     <item>
-      <title>Avoiding a public health dilemma: Social norms and trust facilitate preventive behaviour if individuals perceive low COVID-19 health risks</title>
-      <link>https://fabiankal.github.io/publication/kittel-2021/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kittel-2021/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>How has COVID-19 affected the financial situation of households in Austria?</title>
       <link>https://fabiankal.github.io/publication/albacete-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://fabiankal.github.io/publication/albacete-2021/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>What’s the Benefit of a Video? The Effect of Nonmaterial Incentives on Response Rate and Bias in Web Surveys</title>
-      <link>https://fabiankal.github.io/publication/kalleitner-2020/</link>
-      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kalleitner-2020/</guid>
       <description></description>
     </item>
     
