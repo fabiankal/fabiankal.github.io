@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>‘cheat slides’ for empirical research in R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Fabian Kalleitner" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# ‘cheat slides’ for empirical research in R
+]
+.subtitle[
+## with SOEP data
+]
+.author[
+### Fabian Kalleitner
+]
+.institute[
+### FU Berlin
+]
+.date[
+### 2023/12/22 (updated: 2024-01-09)
+]
+
+---
+
+class: inverse, center, middle
+
+&lt;style type="text/css"&gt;
+
+body, td {
+   font-size: 14px;
+}
+code.r{
+  font-size: 13px;
+}
+pre {
+  font-size: 13px
+}
+&lt;/style&gt;
+
+
+
+
+# Get Started
+
+---
+# Preparing the file location I
+
+The following is not strictly necessary but strongly recommended and the file location information will be based on the structure as described below:
+
+- Before initiating our R project / file we want to establish a baseline folder structure
+
+- Every researcher has different preferences here but I would recommend the following
+
+- Start with a folder named after your project. I will call it: *soep_wealth* 
+  - as a general rule avoid any blanks or special characters (e.g. ß, ö, *, %, ...) in the folder names or the file names
+  
+- create four folders within this folder: *data*, *code*, *output*, *manuscript*
+
+- within the folder *data* create two folders: *raw*, *processed*
+
+- within the folder *output* create two folders: *tab*, *fig*
+
+---
+# Preparing the file location II
+
+The final folder structure should look like this: 
+
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *soep_wealth*
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *data* 
+  - <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *raw* 
+  - <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *processed*
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *code*
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *output* 
+  - <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *tab* 
+  - <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *fig*
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"/></svg> *manuscript*
+
+Using this folder structure helps you keep everything nice and tidy.
+
+As a general rule I put my paper manuscript in the *manuscript* folder (e.g. .doc or .tex files) and have the unedited data files in the *data* sub-folder *raw*. The purpose of the other folders should be self-explanatory.
+
+Note that you could also upload this project folder on **GitHub** (an online version control system). A How-to Guide can be found [here](https://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/). 
+
+---
+# Working with the file location
+
+The main advantage of a defined folder structure is the ability to use **relative** instead of **absolute file paths**. Hence, all paths specified should be relative to the main project file path that can be located anywhere on your system. 
+
+You can find an extensive discussion on file paths and how to deal with them in R [here](https://www.r4epi.com/file-paths).
+
+Important commands (read without "", commands should also work on Mac): 
+  - `"."` indicates the current working directory. Note you can also skip `"."` meaning you can write "./data" or "data" to access the data folder from the working directory
+  - `".."` goes one level higher. E.g., you can access the project folder using ".." if your current working directory is the code folder
+  - `"/"` functions as a separator to indicate different folder levels. E.g., "../data" would access the data folder from the code folder. 
+  - `"getwd()"`reads out the current working directory 
+  - `"setwd()"`would set a new working directory manually
+
+Normally R will use the first file the R session started with as your working directory, if you use an R project you specify the working directory directly (see also next slide).
+
+---
+
+# Starting your R project
+
+Basically we have three options to start our R project after we created the folder structure:
+
+&lt;small&gt;
+
+1. Generate a new R Script: `File -&gt; New File -&gt; R Script` &amp; save it in the `code` directory `File -&gt; Save As...`
+  - R Scripts are "dumb" they are only used to store R Code for later use. We do not distinguish between Code and Text and cannot create markdown files with them
+  
+1. Generate a new R Markdown file: `File -&gt; New File -&gt; R Markdown -&gt; OK` &amp; save it in the `code` directory `File -&gt; Save As...`
+  - R Markdown files have a Header, Code Chunks, and the rest is text (an R Notebook is a dynamic R Markdown file that will automatically try to compile every Code Chunk upon changes). You can find an intro to R Markdown here: [Link](https://bookdown.org/yihui/rmarkdown/)
+  
+1. Generate a new Project: `File -&gt; New Project -&gt; Existing directory -&gt; Browse [&amp; choose the project root directory] --&gt; Create Project`
+  - R Projects have their own R environment meaning they store which files were open in your R session this helps separating your projects
+  - R Projects can also be connected to GitHub and thus easily stored online 
+
+&lt;/small&gt;  
+---
+
+# R packages
+
+Much of the comparative advantage of R over other statistical software derives from free to use packages created by the R community.
+
+Some of the most important packages for our use are: 
+
+- *tidyverse*: a package of packages including especially readr, ggplot2, and dplyr 
+- *haven*: to load "foreign" data formats such as SPSS .sav files and STATA .dta files and use their capability to store variable and value labels 
+- *srvyr*: to apply survey weights to data, 
+- *fixest*: to estimate fixed effects analyses - alternative: plm, 
+- *data.table*: a dplyr alternative that computes faster but more difficult syntax
+- *marginaleffects*: a package to calculate the ominous marginal effects (alternative: ggeffects)
+- *gtsummary*: a package to create summary tables (alternative: stargazer)
+
+
+---
+
+# Install &amp; load packages
+
+An easy way to load this packages is to include their names in a vector and utilize a small function that only installs these packages if they are not already installed using `installed.packages()` and afterwards loads all questions with `library()`. 
+
+&lt;small&gt;
+
+```r
+libraries = c("haven","tidyverse","srvyr",..)
+
+#install packages if not installed
+lapply(libraries, function(x) if (!(x %in% installed.packages())){
+  install.packages(x)
+})
+
+#load libraries
+lapply(libraries, library, quietly = TRUE, character.only = TRUE)
+```
+&lt;/small&gt; 
+
+---
+# Import data
+
+To import different forms of data we need different functions depending on the file format (note that you can always find more information on a specific function by typing `?` and the function name into the console, e.g.:`?read_delim()`):
+
+- **Comma separated files (.csv)** or other text files with a simple delimiter: readr::read_delim()
+  - `data &lt;- read_delim(filepath, delim=",", col_names = TRUE)`
+- **SPSS datasets (.sav files)**: haven::read_sav()
+  - `data &lt;- read_sav(filepath)`
+- **STATA datasets (.dta files)**: haven::read_dta()
+  - `data &lt;- read_dta(filepath)`
+- **EXCEL datasets (.xls/.xlsx files)**: readxl::read_excel()
+  - `data &lt;- read_excel(filepath)` 
+  
+&lt;small&gt; 
+
+Note that `haven::read_sav()` indicates that `read_sav()` stems from the haven package. This is just to inform you about the source. In the code you do not need to specify the package if you use a function if their are no conflicts (multiple loaded packages contain functions with the same name). If this is the case you simply type `haven::read_sav()` and R uses the `read_sav()` function of the `haven` package. Note that *readr* and *readxl* are part of the *tidyverse*. 
+&lt;/small&gt; 
+
+---
+class: inverse, center, middle
+
+# Loading SOEP data
+
+---
+# The starting point: tracking files
+
+The SOEP data comes in the form of several different data files in STATA .dta format. Refer to the [SOEP companion](http://companion.soep.de/Data%20Structure%20of%20SOEPcore/Data%20Distribution.html) for more information.
+
+A recommended way to start importing data is by selecting the target sample using the appropriate *tracking files*. In this simplified introduction I will only mention two of these (see this [link](http://companion.soep.de/Data%20Structure%20of%20SOEPcore/Data%20Sets.html) for more details):
+
+&lt;small&gt; 
+  - **ppathl**: Individual Tracking File in long format (see also [paneldata.org/ppathl](https://paneldata.org/soep-core/datasets/ppathl/)) 
+    - contains all individuals participating in the SOEP = one line for each unique person and survey year. 
+    - contains information to identify this person and match it to a specific household, partner, and survey-year (*pid, hid, cid, syear, parid*) (see also [paneldata.org/identifier](http://companion.soep.de/Data%20Structure%20of%20SOEPcore/Data%20Identifier.html))
+    - contains basic socio-demographic information of this person (e.g.: *birthyear, sex, migback,...*)  
+    - contains basic information on the survey status of this person in a given year meaning what data has been collected and how this person was sampled (e.g.: *netto, pop,...*)
+    - contains important weighting factors (e.g.: *phrf, pbleib,...*)
+    
+    
+  - **hpathl**: Household Tracking File in long format (see also [paneldata.org/hpathl](https://paneldata.org/soep-core/datasets/hpathl/)) 
+    - contains all households participating in the SOEP 
+    - important identifiers: *hid, cid, syear*
+&lt;/small&gt; 
+
+---
+# Loading information of the target sample
+
+If our main (lowest) level of analyses is the year specific individual we will start by loading in the tracking information on the person specific level using the `read_dta` command and selecting the information we need:
+
+```r
+path_data &lt;- "./data" #expects that the project folder is the working directory
+
+data &lt;- read_dta(file = file.path(path_data, 'ppathl.dta'),
+                 col_select = c(cid, pid, hid, syear, #identifiers
+                                psample, pop, netto, #survey characteristics
+                                sex, gebjahr, migback,sampreg, #socio-demographics
+                                phrf, pbleib) #weighting factors
+                )
+```
+&lt;small&gt;
+Note that one could also read in the full information of *ppathl* by skipping `col_select`.
+&lt;/small&gt; 
+
+---
+# Selecting the target sample
+
+Next we can select the target sample using information on the survey years, the survey status, and the socio-demographic characteristics of specific persons. 
+
+Here it is advisable to keep the dataset as small as needed (subsetting the data now will speed up the analyses later).
+
+Example: Target Population = Person interviews of the working-age population living in private households after the German reunification:
+
+```r
+data &lt;- data %&gt;% 
+  filter(netto&gt;=10, netto&lt;=19,# select only data of persons who successfully filled out a person-specific interview in the given year
+         gebjahr &lt;= (syear-15), # of working-age  
+         gebjahr &gt;= (syear-68), 
+         pop &lt;= 2, # living in a private household
+         syear&gt;1991,)  # after the German reunification)
+summary(data$netto) # e.g. check netto in the final sample
+```
+&lt;small&gt;
+Note that one could also read in the full information of *ppathl* by skipping `col_select`.
+&lt;/small&gt; 
+
+---
+# Quick tip: loading dataset labels
+We can read out the variable label using functions from the *haven* package.
+
+```r
+var_label(data$netto) # variable label of netto (=variable description)
+val_labels(data$netto) # value labels of netto 
+```
+To read out the labels of an entire dataset we write our own function:
+
+```r
+storelabels &lt;- function(from){
+  data_lab  &lt;- read_dta(file = file.path(path_data, paste0(from, '.dta')))
+  labelsum  &lt;-data_lab %&gt;%  
+    summarise(variable=names(.),
+              label=var_label(.),
+              values=val_labels(.)) %&gt;% 
+    mutate(label=as.character(label),
+           values=as.character(values)) 
+  return(labelsum)
+}
+hpathl_l &lt;- storelabels('hgen') #store labels from hpathl and show them afterwards
+view(hpathl_l) #--&gt; shows the full data table in a new tab
+```
+&lt;small&gt;
+Note that you only have to execute a function once per R Session to be able to use it. Because sorelabels loads the full dataset it is quite time consuming, so if possible avoid using it and look at the documentation instead --&gt; see for hgen: [paneldata.org/hgen](https://paneldata.org/soep-core/datasets/hgen/)
+&lt;/small&gt; 
+
+---
+# Loading information from other datasets
+
+In a next step we will use the tracking information of the target sample to add information from other datasets of the SOEP. 
+
+For this purpose we will again create our own small function that will load the new dataset and match it to our existing dataset using the appropriate identifiers (keys).
+
+This **attachVariable** function will expect 4 variables: 
+  - vars: what variables should be added, 
+  - from: dataset that contains these variables, 
+  - to:   dataset that should afterwards contain these variables
+  - keys: identifiers to match the appropriate data (persons, households etc.) in the two datasets 
+&lt;small&gt;
+
+```r
+attachVariable &lt;- function(vars, from, to, keys){ 
+  data_new  &lt;- read_dta(file = file.path(path_data, paste0(from, '.dta')), #read the dataset containing the additional variables
+                        col_select = c(sapply(keys, paste), sapply(vars, paste))) # select the needed variables
+  to &lt;- left_join(to,data_new, by = keys) # match the new variables to the target dataset using the appropriate identifiers (keys)
+  return(to) # return the final extended dataset as the result of the function
+}
+```
+
+---
+
+# Loading additional data: Examples
+
+Example 1: add information on labor force status from the dataset **pgen**
+
+
+```r
+data_new &lt;- attachVariable(vars = c('pglfs','pglabnet'), # take the variables pglfs &amp; pglabnet
+                           from = 'pgen', # from the dataset pgen
+                           to = base_ego, # add it to the existing dataset base_ego
+                           keys = c('pid', 'syear')) # using the identifiers pid, &amp; syear
+```
+Example 2: add information on total net household income from the dataset **hgen**
+
+
+```r
+data_new &lt;- attachVariable(vars = c('hghinc'), # take the variable hghinc
+                           from = 'hgen', # from the dataset hgen
+                           to = base_ego, # add it to the existing dataset base_ego
+                           keys = c('hid', 'syear')) # using the identifiers hid, &amp; syear
+```
+&lt;small&gt;
+Note that the second example overwrites the first one because we are again using **base_ego** as the starting dataset. If we do not want to overwrite it we have to use **data_new** as our starting dataset in Example 2. 
+&lt;/small&gt; 
+
+---
+class: inverse, center, middle
+
+# Data preprocessing 
+
+---
+
+# Data cleaning: Missing values
+&lt;small&gt;
+Survey datasets contain two general types of missing data: 
+ - unit missings/non-response: a person/household is not willing or able to participate in the survey although this person would be in the target sample
+ - item missings/non-response: a specific item (question) has not been answered by a person/household
+
+To deal with unit non-response, researchers often apply different strategies of weighting the data. 
+
+To deal with item non-response, researchers also have different strategies available but most commonly simply drop those cases where one or more variables of interest are missing. This approach is called listwise deletion of missing values and expects that the data is missing fully at random (or missing at random and the explanatory variables of the probability of missing values are controlled for by the research design or the analytical strategy/modelling approach). 
+
+Missing values are indicated by negative values in the SOEP. This is defined [here](http://companion.soep.de/Data%20Structure%20of%20SOEPcore/Missing%20Conventions.html).
+
+A non-response "No answer/don’t know" is indicated by -1. But as specified in the documentation there are many more reasons for missing values like that a specific question was not asked to a specific person (e.g. questions to children to an adult) or because a specific question was not part of the questionnaire in that given year, etc.
+&lt;/small&gt; 
+---
+
+# Check the reason for missing values I
+&lt;small&gt;
+Before declaring missing values you should get an overview why specific items are missing either by using the documentation or by creating graphs or tables of the missing values ourself. Let's look at the variable **plh0258_h** *church, religion [harmonised]* for example.
+&lt;/small&gt; 
+
+&lt;img src="https://git.soep.de/szimmermann/soepgraphics/-/raw/v38/Grafiken/pl/en/plh0258_h.png"
+     width="600px" height="300px"
+     style="position:absolute; left:80px; top:240px;"&gt;
+     
+`\(~\)`
+
+`\(~\)`
+
+`\(~\)`
+
+`\(~\)`
+
+`\(~\)`
+
+`\(~\)`
+
+`\(~\)`
+
+`\(~\)`
+&lt;small&gt;
+As one can see this variable is not included in the questionnaire until the year 1990. In this year and in several others it has been asked to the full population. In contrast in the year 2016 and several others it has been asked only to a predominantly non-Christian subsample of the population. Image credit: [paneldata.org](https://paneldata.org/soep-core/datasets/pl/plh0258_h)
+&lt;/small&gt;
+---
+
+# Check the reason for missing values II
+
+We can create this visualization on our own.
+
+
+```r
+#will be added soon
+```
+
+Or we can quickly show some informative tabulations. Here I am using the example of household income **hghinc**:
+
+
+```r
+# tabulate the missing (negative) values of hghinc using its labels
+table(as_factor(base_ego$hghinc[base_ego$hghinc&lt;0])) 
+
+# tabulate the percentages of missing values "-1 = no answer/don't know" by years 
+prop.table(table(base_ego$hghinc!=-1,base_ego$syear),margin = 2) 
+```
+---
+
+# Data cleaning: Declare missing values
+
+In R missing values are generally indicated by `NA` = "not available". Hence, we will change the negative values to be missing an thus `NA`.
+
+Most calculations with an `NA` result in `NA`. Hence, `1 + NA = NA`. Thus, if we drop cases with missing values in future calculations (e.g. by `na.rm = TRUE` when calculating means) R will automatically apply listwise deletion of missing values for us. 
+
+
+```r
+base_ego &lt;- mutate_at(data_new, vars(c( "pid", "hid", "syear", "psample", "pop", "netto", # mutate_at() changes all variables listed in vars
+                                        "sex", "migback", "sampreg",  "phrf", "pbleib","pglfs",
+                                        "hnetto","hbleib","hhrf","hsample","hpop" ,"hghinc")),
+                  list(~ ifelse( . %in% c(-8:-1), NA, .))) # apply the following function to a variable in the list of variables if between -8 and -1 and make it NA otherwise leave it unchanged 
+```
+Note, you can also transform all variables using `mutate_all()` or `colwise()` instead of `mutate_at(vars)`.
+
+---
+# Data cleaning: Drop missing values
+
+If we do intend to only use the full valid cases in our sample anyway we can also drop these cases to get an **analytical sample** from our *target sample* containing only those individuals who have non-missing information in our variables of interest in a given year. 
+
+
+```r
+# drop all rows containing missing values in the dataset
+base_ego_c &lt;- base_ego %&gt;% drop_na() 
+
+# drop all rows containing missing values in the columns "sampreg" and "hghinc"
+base_ego_c &lt;- base_ego %&gt;% drop_na(c("sampreg", "hghinc")) 
+```
+---
+class: inverse, center, middle
+
+# Data recoding
+
+In the following I will give examples of simple forms of variable recoding that are usually necessary before analysing the data. 
+
+---
+
+# Data recoding - Create dummies
+
+Create dummies = 0/1 indicators that show whether something is true or not.
+
+Example an indicator for living currently in the territory of former West-Germany = 1 (vs. East-Germany=0).
+
+
+```r
+base_ego_c &lt;- base_ego_c %&gt;% mutate(westg = ifelse(is.na(base_ego_c$sampreg),NA, # make NA if it is NA (most often not necessary)
+                                            ifelse(base_ego_c$sampreg == 1, 1 , 0)) # make 1 if sampreg is 1
+                                    )
+base_ego_c$westg&lt;-as.factor(base_ego_c$westg) # declare the variable to be a factor
+levels(base_ego_c$westg)&lt;-c("East Germany","West Germany") # attach value labels to the factor levels
+
+table(base_ego_c$westg,base_ego_c$sampreg,useNA = "always") # check whether we recoded correctly 
+```
+
+---
+# Data recoding - Calculate ordinal factor from larger factor
+
+Create a simple factor level indicators from more detailed measurements.
+
+Example an indicator for an individual's current employment status using 5 categories (self)-employed, unemployed, in education, retired, rest.
+
+
+```r
+base_ego_c &lt;- base_ego_c %&gt;% mutate(empl5 = ifelse(pglfs == 11 | pglfs == 12  | pglfs == 13 , 0,
+                                            ifelse(pglfs == 6, 1,
+                                            ifelse(pglfs == 3, 2,
+                                            ifelse(pglfs == 2, 3,
+                                            ifelse(pglfs == 2|pglfs == 4|pglfs == 5|pglfs == 8|pglfs == 9|pglfs == 10,4,NA)))))
+                                    )
+base_ego_c$empl5&lt;-as.factor(base_ego_c$empl5) # declare the variable to be a factor
+levels(base_ego_c$empl5)&lt;-c("(self)-employed", "unemployed", "in education", "retired", "rest") # attach value labels to the factor levels
+
+table(base_ego_c$empl5,base_ego_c$pglfs,useNA = "always") # check whether we recoded correctly 
+```
+
+---
+# Data recoding - calculate factor from continuous
+
+Create a simple factor level indicators from more a continuous measurement.
+
+Example an indicator for an individual's age group using 5 categories  &lt;18, 18-35, 36-65,&gt;65.
+
+```r
+base_ego_c &lt;- base_ego_c %&gt;% mutate(age = syear-gebjahr, # gebjahr is the year of birth we can create mutlible variables in one mutate sperating the commands with ","
+                                    age_c = ifelse(age &lt; 18, 0,
+                                            ifelse(age &gt;= 18 &amp; age &lt; 36, 1,
+                                            ifelse(age &gt;= 36 &amp; age &lt; 66, 2,
+                                            ifelse(age &gt;= 66, 3,NA))))
+                                    )
+base_ego_c$age_c&lt;-as.factor(base_ego_c$age_c) # declare the variable to be a factor
+levels(base_ego_c$age_c)&lt;-c("&lt;18", "18-35", "36-65", "&gt;65") # attach value labels to the factor levels
+table(base_ego_c$age_c,base_ego_c$age,useNA = "always") # check whether we recoded correctly 
+```
+
+---
+# Data recoding - calculate continous indicator from other continous
+
+Example, calculate relative contribution to the household income
+
+
+```r
+base_ego_c &lt;- base_ego_c %&gt;% mutate(relcontr = (pglabnet/hghinc)*100) #relative contribution in percent 0-100 
+```
+Continuous variables are often difficult to tabulate. An easy alternative is to look at whether the distribution seems reasonable compared to the distributions of the initial variables:
+
+
+```r
+hist(pglabnet)
+hist(hghinc)
+hist(relcontr)
+```
+Note that only people with a job have a labor income **pglabnet** that is non missing. If we want to calculate relative incomes also for persons which are not participating in the labor market we would have to recode **pglabnet** first.
+---
+# Data recoding - calculate spouse's relative income within a two earner households
+
+This example will be added soon
+
+---
+# Data analyses descriptives (shares)
+
+Example: Calculate the unweighted shares of certain variables including confidence intervals.  
+
+
+```r
+plotdata.westg&lt;-base_ego_c %&gt;% 
+  drop_na(westg) %&gt;% 
+  group_by(westg,syear) %&gt;%
+  summarise(n=n()) %&gt;% 
+  group_by(westg,syear) %&gt;%
+     mutate(prop = n/sum(n),
+            se=sqrt(n/sum(n))
+            ymax=prop+qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n, 
+            ymin=prop-qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n)
+```
+
+If you want to calculate household level means with person level (like the mean in household income *hghinc*) data you have to add `group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE)`. To only keep one datapoint per household per year to avoid biasing your data by household size and not underestimate the confidence intervals. 
+
+
+---
+# Data analyses descriptives (means)
+
+Example: Calculate the unweighted means of certain variables including confidence intervals. 
+
+
+```r
+plotdata.westg &lt;- base_ego_c %&gt;% #base dataset
+  drop_na(westg) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
+  group_by(westg,syear) %&gt;% # declare how the means should be calculated (grouped)
+  summarise( n=n(,na.rm=T, # how much valid cases are existing per group
+             mean=mean(pglabnet , na.rm = T), # what is the mean of pglabnet within this group
+             sd=sd(pglabnet, na.rm = T)) %&gt;% # what is the standard deviation of pglabnet within this group
+  mutate( se=sd/sqrt(n), # calculate the standard error using the standard deviation and the number of observations within the group
+          ci=se * qt(0.975, n-1), # calculate the 1/2 confidence interval for alpha = 0.05
+          type="unweighted") # you can add any other indicator etc. by yourself for later use: here i add a variable type that has the value "unweighted"
+```
+
+If you want to calculate household level means with person level (like the mean in household income *hghinc*) data you have to add `group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE)`. To only keep one datapoint per household per year to avoid biasing your data by household size and not underestimate the confidence intervals. 
+
+---
+# Data analyses descriptives (weighted shares)
+
+calculating weighted shares
+
+calculating weighted means
+
+
+```r
+plotdata.westg.w &lt;- base_ego_c %&gt;% drop_na(westg) %&gt;% group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE) %&gt;% ungroup %&gt;%
+  as_survey_design(weights = c(phrf)) %&gt;%
+  group_by(westg,syear) %&gt;%
+  summarise( n=n(),
+             mean=survey_mean(hghinc , na.rm = T)) %&gt;%
+  mutate(ci=mean_se * qt((1-0.05)/2 + .5, n-1),
+         type="weighted") 
+```
+
+---
+# Data analyses descriptives (weighted means)
+
+calculating weighted shares
+
+calculating weighted means
+
+
+```r
+plotdata.westg.w &lt;- base_ego_c %&gt;% drop_na(westg) %&gt;% group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE) %&gt;% ungroup %&gt;%
+  as_survey_design(weights = c(phrf)) %&gt;%
+  group_by(westg,syear) %&gt;%
+  summarise( n=n(),
+             mean=survey_mean(hghinc , na.rm = T)) %&gt;%
+  mutate(ci=mean_se * qt((1-0.05)/2 + .5, n-1),
+         type="weighted") 
+```
+
+---
+# Data analyses descriptive graphs I
+
+One of the main powerful tools in R is ggplot2 (part of tidyverse). ggplot2 has a very distinct but easy to learn and extend syntax to build graphs. It basically maps data on a plane and thus can easily stack different types of graphs and even datasets on top of each other. Nearly every ggplot follows the same base syntax:
+
+
+```r
+ggplot(data=cars, aes(x=speed, y=dist)) 
+```
+
+![](SOEPinR_files/figure-html/graph1-1.png)&lt;!-- --&gt;
+
+```r
+ggplot(data=cars, aes(x=speed, y=dist)) + # provide the dataset: data should be already in aggregated form meaning if you want to plot means. Aggregate beforehand (e.g. with dplyr) and plot the data afterwards. + In addition the data should be in long format. Meaning for every categorical variable you want to account for, you should calculate means and store them using a oridnal indicator. (If you use dplyr use group_by for every category you want to differentiate: e.g. for year, and sex calculate means by (syear, age))
+ geom_point() + #aes(color =, shape=)
+ #geom_line() + #aes(color =, linetype=)
+ geom_smooth(method="lm",formula=  y~x)
+```
+
+![](SOEPinR_files/figure-html/graph1-2.png)&lt;!-- --&gt;
+
+```r
+#  geom_bar(aes(fill =, group=)), 
+# facet_grid/facet_wrap
+
+# labs() # labels
+# theme # details
+#Axis options
+```
+
+---
+
+# Data analyses descriptive graphs II
+
+
+```r
+data=mtcars
+means&lt;-data %&gt;% group_by(am) %&gt;% summarise(avg_mpg=mean(mpg)) %&gt;% mutate(am=as.factor(am))
+ggplot(data=means, aes(x=am,y=avg_mpg))  + # provide the dataset: data should be already in aggregated form meaning if you want to plot means. Aggregate beforehand (e.g. with dplyr) and plot the data afterwards. + In addittion the data should be in long format. Meaning for every categprical variable you want to account for, you should calulate means and store them using a oridnal indicator. (If you use dplyr use group_by for every category you want to differentiate: e.g. for year, and sex calculate means by (syear, age))
+ geom_col(aes(fill =am, )) #aes(group=) # use geom_bar if you want to stack shares within a group
+```
+
+![](SOEPinR_files/figure-html/graph2-1.png)&lt;!-- --&gt;
+
+```r
+ggplot(data=data, aes(x=am)) + geom_bar()
+```
+
+![](SOEPinR_files/figure-html/graph2-2.png)&lt;!-- --&gt;
+
+```r
+# facet_grid/facet_wrap
+# 
+# labs() # labels
+# theme # details
+#Axis options
+```
+
+---
+
+# Long vs. Wide Data: What’s the Difference? I
+
+&lt;font size="4"&gt;- The difference between wide and long datasets is not how much information is stored in them but how the information is structured.
+
+&lt;font size="4"&gt;- A **wide** format contains values that *do not* repeat (in the first column / ID column).
+
+&lt;font size="4"&gt;- A **long** format contains values that *do* repeat (in the first column / ID column).
+
+&lt;font size="4"&gt; Here is a table in wide format:
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Age &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; COVID_t1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; COVID_t2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; COVID_t3 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Jon &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bill &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Maria &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ahmet &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Lea &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;font size="4"&gt; Notice that every Person in this dataset has one and only one row of data. However, information on certain variables can be spread to multiple columns. Here information on whether a Person currently has contracted COVID is in three columns and the column name contains information how these differ (t1,t2,t3). 
+
+&lt;font size="3"&gt;Inspired by Zach [@statology.org](https://www.statology.org/long-vs-wide-data/)
+---
+# Long vs. Wide Data: What’s the Difference? II
+
+&lt;font size="4"&gt;Here is the same table in long format (only the first 3 Persons are shown)
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Time &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; COVID &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Jon &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Jon &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Jon &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bill &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 41 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bill &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 41 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bill &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 41 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Maria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Maria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Maria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;font size="4"&gt; Notice that now every Person has multiple data rows, but the information on the time of the COVID-infection is now stored in a new column **Time** rather than in multiple variable names.
+
+---
+# Long vs. Wide Data: What to remember
+
+- In **wide** format: 
+  - Every *entity* we want to analyse (individual/country/firm) has its unique row. 
+  - If more than one observation of the same variable exists (e.g. because we have multiple observations in time or because we have multiple observations of individuals within a firm) these observations are stored in several columns.
+  - The names of these columns contain information about how each entity is connected to each observation.
+    
+- In **long** format: 
+  - Every *observation* has its unique row. 
+  - Every entity we want to analyse is spread to multiple rows. 
+  - Every unique observation can be identified using a combination of the *entity* and one or more other columns (e.g. time, person, etc.) 
+  
+- When we analyse data, most often we need data in wide format. 
+
+- When we want to make figures, most often we need data in long format.
+
+---
+
+# The format of the SOEP 
+
+The SOEP datasets contains data from a Panel survey. Thus, it contains information on individuals that have filled in surveys (and often answered the same questions) at several points in time. 
+
+- The SOEP dataset stores information in a **wide** format. Hence:  
+  - Information of each individual is stored in a unique row. 
+  - Multiple observations are stored in several columns.
+  - Information about the time the observation was collected is stored in the Name of the columns. 
+  - The time information is stored in the beginning of the variable names and range from `W1_` - `W24_`
+  
+Note that some information is only asked once because it remains constant or quasi constant in the short run (e.g. the birth year of respondents) Most often these variables start with `SD_`. 
+
+---
+
+class: center, middle
+
+# This is an uninspired thank you slide!
+
+The remaining course will continue in the R markdown file on working with panel data
+
+Feedback is appreciated: write me an [E-Mail](mailto:fabian.kalleitner@fu-berlin.de)
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "xcode",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
