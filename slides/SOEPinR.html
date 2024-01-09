@@ -516,80 +516,86 @@ Note that only people with a job have a labor income **pglabnet** that is non mi
 This example will be added soon
 
 ---
-# Data analyses descriptives (shares)
+# Data analyses descriptives (proportion)
 
-Example: Calculate the unweighted shares of certain variables including confidence intervals.  
+Calculate the unweighted proportion of certain variables including confidence intervals.
+For the statistical formalities refer to [link](https://stats.libretexts.org/Courses/Rio_Hondo_College/Math_130%3A_Statistics/07%3A_Confidence_Intervals/7.02%3A_Confidence_Interval_for_a_Proportion). 
+Example: Proportion of people in West-Germany by year
 
 
 ```r
-plotdata.westg&lt;-base_ego_c %&gt;% 
-  drop_na(westg) %&gt;% 
-  group_by(westg,syear) %&gt;%
-  summarise(n=n()) %&gt;% 
-  group_by(westg,syear) %&gt;%
-     mutate(prop = n/sum(n),
-            se=sqrt(n/sum(n))
-            ymax=prop+qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n, 
-            ymin=prop-qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n)
+#calculate shares of westg = 1 vs. westg = 0 within survey years
+
+plotdata.westg &lt;- base_ego_c %&gt;% #base dataset
+  drop_na(westg,syear) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
+  group_by(westg,syear) %&gt;% # declare how the proportions should be calculated (grouped)
+  summarise(n=n()) %&gt;% # how much valid cases are existing per group
+  group_by(syear) %&gt;%
+     mutate(prop = n/sum(n), # calculate share/proportion of factor within group
+            se=sqrt(n/sum(n))*(1-(n/sum(n)))/n, # calculate standard error
+            ymax=prop+qnorm(0.975)*se, # calculate confidence interval of share
+            ymin=prop-qnorm(0.975)*se
+            )
 ```
-
-If you want to calculate household level means with person level (like the mean in household income *hghinc*) data you have to add `group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE)`. To only keep one datapoint per household per year to avoid biasing your data by household size and not underestimate the confidence intervals. 
-
 
 ---
 # Data analyses descriptives (means)
 
-Example: Calculate the unweighted means of certain variables including confidence intervals. 
+Calculate the unweighted means of certain variables including confidence intervals.
+For the statistical formalities refer to [link](https://stats.libretexts.org/Courses/Rio_Hondo_College/Math_130%3A_Statistics/07%3A_Confidence_Intervals/7.03%3A_Confidence_Interval_for_a_Mean).
+Example: Mean of person net income in West vs. East by year.
 
 
 ```r
 plotdata.westg &lt;- base_ego_c %&gt;% #base dataset
-  drop_na(westg) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
+  drop_na(westg,syear) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
   group_by(westg,syear) %&gt;% # declare how the means should be calculated (grouped)
-  summarise( n=n(,na.rm=T, # how much valid cases are existing per group
+  summarise(n=n(), # how much valid cases are existing per group
              mean=mean(pglabnet , na.rm = T), # what is the mean of pglabnet within this group
              sd=sd(pglabnet, na.rm = T)) %&gt;% # what is the standard deviation of pglabnet within this group
-  mutate( se=sd/sqrt(n), # calculate the standard error using the standard deviation and the number of observations within the group
-          ci=se * qt(0.975, n-1), # calculate the 1/2 confidence interval for alpha = 0.05
+  mutate(se=sd/sqrt(n), # calculate the standard error using the standard deviation and the number of observations within the group
+          ymin=mean - se * qt(0.975, n-1),
+          ymax=mean - se * qt(0.975, n-1),# calculate the 1/2 confidence interval for alpha = 0.05
           type="unweighted") # you can add any other indicator etc. by yourself for later use: here i add a variable type that has the value "unweighted"
 ```
 
 If you want to calculate household level means with person level (like the mean in household income *hghinc*) data you have to add `group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE)`. To only keep one datapoint per household per year to avoid biasing your data by household size and not underestimate the confidence intervals. 
 
 ---
-# Data analyses descriptives (weighted shares)
+# Data analyses descriptives (weighted proportions)
 
-calculating weighted shares
-
-calculating weighted means
+Calculate the cross-sectionally weighted proportions of certain variables including confidence intervals. Uses the command `as_survey_design()` from the *srvyr* package.
+Example: Proportion of people in West-Germany by year, weighted.
 
 
 ```r
-plotdata.westg.w &lt;- base_ego_c %&gt;% drop_na(westg) %&gt;% group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE) %&gt;% ungroup %&gt;%
-  as_survey_design(weights = c(phrf)) %&gt;%
-  group_by(westg,syear) %&gt;%
-  summarise( n=n(),
-             mean=survey_mean(hghinc , na.rm = T)) %&gt;%
-  mutate(ci=mean_se * qt((1-0.05)/2 + .5, n-1),
-         type="weighted") 
+plotdata.westg.w &lt;- base_ego_c %&gt;% #base dataset
+  drop_na(westg,syear) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
+  as_survey_design(weights = c(phrf)) %&gt;% # weight data using the survey weights provided
+  group_by(westg,syear) %&gt;% # group the data by grouping variable and the variable containing the proportions of interest (in this example westg)
+  summarise(n=survey_total(vartype = c("se"))) %&gt;%  #calculate total weighted n
+             group_by(syear) %&gt;%
+             mutate(prop = n/sum(n), #calculate proportions
+                    ymax=prop+qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n, # calculate the 1/2 confidence interval for alpha = 0.05
+                    ymin=prop-qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n)
 ```
 
 ---
+
 # Data analyses descriptives (weighted means)
 
-calculating weighted shares
-
-calculating weighted means
+Example: Mean of person net income in West vs. East by year, weighted.
 
 
 ```r
-plotdata.westg.w &lt;- base_ego_c %&gt;% drop_na(westg) %&gt;% group_by(syear) %&gt;% distinct(hid, .keep_all = TRUE) %&gt;% ungroup %&gt;%
-  as_survey_design(weights = c(phrf)) %&gt;%
-  group_by(westg,syear) %&gt;%
-  summarise( n=n(),
-             mean=survey_mean(hghinc , na.rm = T)) %&gt;%
-  mutate(ci=mean_se * qt((1-0.05)/2 + .5, n-1),
-         type="weighted") 
+plotdata.westg.w &lt;- base_ego_c %&gt;% #base dataset
+  drop_na(westg,syear)  %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
+  as_survey_design(weights = c(phrf)) %&gt;% # weight data using the survey weights provided
+  group_by(westg,syear) %&gt;% # state the grouping variables
+  summarise( n=n(), # count number of cases within groups
+             mean=survey_mean(pglabnet , na.rm = T)) %&gt;% #calculate weighted means
+  mutate(ymax=mean + mean_se * qt(0.975, n-1), # calculate the 1/2 confidence interval for alpha = 0.05
+         ymin=mean + mean_se * qt(0.975, n-1)) 
 ```
 
 ---
@@ -813,11 +819,11 @@ ggplot(data=data, aes(x=am)) + geom_bar()
 
 ---
 
-# The format of the SOEP 
+# The format of the SOEP (still unfinished)
 
 The SOEP datasets contains data from a Panel survey. Thus, it contains information on individuals that have filled in surveys (and often answered the same questions) at several points in time. 
 
-- The SOEP dataset stores information in a **wide** format. Hence:  
+- The SOEP dataset stores information in a **wide** format only in special cases. Hence:  
   - Information of each individual is stored in a unique row. 
   - Multiple observations are stored in several columns.
   - Information about the time the observation was collected is stored in the Name of the columns. 
