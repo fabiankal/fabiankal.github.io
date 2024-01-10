@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### FU Berlin
 ]
 .date[
-### 2023/12/22 (updated: 2024-01-09)
+### 2023/12/22 (updated: 2024-01-10)
 ]
 
 ---
@@ -42,6 +42,25 @@ code.r{
 }
 pre {
   font-size: 13px
+}
+
+pre {
+  white-space: pre;
+  background: #F5F5F5;
+  max-width: 100%;
+  max-height: 50%;
+  overflow-y:auto;
+}
+
+&lt;/style&gt;
+
+
+&lt;style type="text/css"&gt;
+.scroll-100 {
+  max-height: 100px;
+  overflow-y: auto;
+  background-color: inherit;
+  overflow-x:scroll
 }
 &lt;/style&gt;
 
@@ -379,11 +398,59 @@ As one can see this variable is not included in the questionnaire until the year
 
 # Check the reason for missing values II
 
-We can create this visualization on our own.
+We can create this visualization on our own. I use the *patchwork* package to combine two ggplots.
 
 
 ```r
-#will be added soon
+# Create a function that plots missing data of variable "var" from a certain dataframe "from"
+getmissmap &lt;- function(from,var){ 
+  var &lt;- enquo(var) #needed for programming reasons
+  
+#create table of valid proportions of a variable within each year
+  plotdata &lt;- from %&gt;% #base dataset
+    drop_na(!!var,syear) %&gt;% #the !! are only needed because we use dplyr functions within a function
+    filter(!!var&gt;=0) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
+    group_by(!!var,syear,) %&gt;% # declare how the proportions should be calculated (grouped)
+    summarise(n=n()) %&gt;% # how much valid cases are existing per group
+    group_by(syear) %&gt;%
+    mutate(prop = n/sum(n)) # calculate share/proportion of factor within group 
+
+#create table of missing values of a variable within each year
+  plotmissi &lt;- from %&gt;% #base dataset
+    drop_na(!!var,syear) %&gt;%
+    mutate(var_n=ifelse(!!var&lt;0,!!var,1)) %&gt;% 
+    group_by(var_n,syear) %&gt;% 
+    summarise(n=n()) %&gt;% 
+    group_by(syear) %&gt;%
+    mutate(prop = n/sum(n)) 
+
+#plot the two graphs and combine them
+  p1&lt;- ggplot(plotdata, aes(fill=as_factor(!!var),x=syear, y=prop)) + 
+    geom_bar(position="stack", show.legend = TRUE,stat = "identity", width=0.7) +
+    scale_fill_brewer(palette = "Set3", direction =-1) +  #alternative:Blues
+    labs(y = "", x= "",fill="",title="") +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    theme_classic() +
+    theme(legend.position="right") + 
+    guides(fill=guide_legend(ncol=1,byrow=TRUE)) +
+    scale_x_continuous(guide = guide_axis(angle = 90),breaks=seq(1984,2021,1),limits=c(1984,2021))
+  
+  p2&lt;- ggplot(plotmissi, aes(fill=as_factor(var_n),x=syear, y=prop)) + 
+    geom_bar(position="stack", show.legend = TRUE,stat = "identity", width=0.7) +
+    scale_fill_brewer(palette = "Set1", direction =-1) +  #alternative:Blues
+    labs(y = "", x= "",fill="",title="") +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    theme_classic() +
+    theme(legend.position="bottom") + 
+    guides(fill=guide_legend(nrow=2,byrow=TRUE)) +
+    scale_x_continuous(guide = guide_axis(angle = 90),breaks=seq(1984,2021,1),limits=c(1984,2021))
+  
+  px&lt;-p1+p2 +  plot_layout(ncol = 1,heights = c(4, 1))
+  
+    return(px) # return the final extended dataset as the result of the function
+}
+#call the new function: example plot the variable sex located in the data-frame base_ego
+getmissmap(base_ego, sex)
 ```
 
 Or we can quickly show some informative tabulations. Here I am using the example of household income **hghinc**:
@@ -532,7 +599,7 @@ plotdata.westg &lt;- base_ego_c %&gt;% #base dataset
   summarise(n=n()) %&gt;% # how much valid cases are existing per group
   group_by(syear) %&gt;%
      mutate(prop = n/sum(n), # calculate share/proportion of factor within group
-            se=sqrt(n/sum(n))*(1-(n/sum(n)))/n, # calculate standard error
+            se=sqrt((prop*(1-prop))/sum(n)),
             ymax=prop+qnorm(0.975)*se, # calculate confidence interval of share
             ymin=prop-qnorm(0.975)*se
             )
@@ -569,15 +636,13 @@ Example: Proportion of people in West-Germany by year, weighted.
 
 
 ```r
-plotdata.westg.w &lt;- base_ego_c %&gt;% #base dataset
+plotdata.westg.w2 &lt;- base_ego %&gt;% #base dataset
   drop_na(westg,syear) %&gt;% # drop missing values in the grouping variable (not needed if this is done before)
   as_survey_design(weights = c(phrf)) %&gt;% # weight data using the survey weights provided
-  group_by(westg,syear) %&gt;% # group the data by grouping variable and the variable containing the proportions of interest (in this example westg)
-  summarise(n=survey_total(vartype = c("se"))) %&gt;%  #calculate total weighted n
-             group_by(syear) %&gt;%
-             mutate(prop = n/sum(n), #calculate proportions
-                    ymax=prop+qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n, # calculate the 1/2 confidence interval for alpha = 0.05
-                    ymin=prop-qnorm(0.975)*sqrt(n/sum(n))*(1-(n/sum(n)))/n)
+  group_by(syear,westg) %&gt;% # group the data by grouping variable and the variable containing the proportions of interest (in this example westg)
+  summarise(prop = survey_prop())%&gt;%
+  mutate(ymax=prop+qnorm(0.975)*prop_se,
+         ymin=prop-qnorm(0.975)*prop_se)
 ```
 
 ---
@@ -599,34 +664,31 @@ plotdata.westg.w &lt;- base_ego_c %&gt;% #base dataset
 ```
 
 ---
-# Data analyses descriptive graphs I
+class: inverse, center, middle
 
-One of the main powerful tools in R is ggplot2 (part of tidyverse). ggplot2 has a very distinct but easy to learn and extend syntax to build graphs. It basically maps data on a plane and thus can easily stack different types of graphs and even datasets on top of each other. Nearly every ggplot follows the same base syntax:
+# Data analyses - descriptive graphs
 
+In the following I provide a short intro to ggplot2 and provide some examples how to use it. 
 
-```r
-ggplot(data=cars, aes(x=speed, y=dist)) 
-```
+---
+# GGPLOT I
 
-![](SOEPinR_files/figure-html/graph1-1.png)&lt;!-- --&gt;
+**ggplot2** (part of tidyverse) has a very distinct but easy to learn and use syntax to build *graphs*. It basically maps data on a plane and thus can easily stack different types of graphs and even datasets on top of each other. Nearly every ggplot follows the same base syntax:
 
-```r
-ggplot(data=cars, aes(x=speed, y=dist)) + # provide the dataset: data should be already in aggregated form meaning if you want to plot means. Aggregate beforehand (e.g. with dplyr) and plot the data afterwards. + In addition the data should be in long format. Meaning for every categorical variable you want to account for, you should calculate means and store them using a oridnal indicator. (If you use dplyr use group_by for every category you want to differentiate: e.g. for year, and sex calculate means by (syear, age))
- geom_point() + #aes(color =, shape=)
- #geom_line() + #aes(color =, linetype=)
- geom_smooth(method="lm",formula=  y~x)
-```
-
-![](SOEPinR_files/figure-html/graph1-2.png)&lt;!-- --&gt;
 
 ```r
-#  geom_bar(aes(fill =, group=)), 
-# facet_grid/facet_wrap
-
-# labs() # labels
-# theme # details
-#Axis options
+#Figure 1
+ggplot(data=cars, aes(x=speed, y=dist)) # provide the dataset, create an empty plane and map the data (aes="Construct aesthetic mappings")
+#Figure 2
+ggplot(data=cars, aes(x=speed, y=dist)) + 
+geom_point() # adds the geom (=geometric object) and maps it as specified in aes() earlier
+#Figure 3
+ggplot(data=cars, aes(x=speed, y=dist)) + 
+geom_point() + # we could add further aes mappings specific to the geom_point object here (e.g. color, shape, etc.)
+geom_smooth(method="lm",formula=  y~x) # adds a second geom that computes a linear trend line automatically
 ```
+
+&lt;img src="SOEPinR_files/figure-html/graph1-1.png" width="25%" /&gt;&lt;img src="SOEPinR_files/figure-html/graph1-2.png" width="25%" /&gt;&lt;img src="SOEPinR_files/figure-html/graph1-3.png" width="25%" /&gt;
 
 ---
 
