@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### FU Berlin
 ]
 .date[
-### 2023/12/22 (updated: 2024-01-16)
+### 2023/12/22 (updated: 2024-01-23)
 ]
 
 ---
@@ -335,6 +335,42 @@ data_new &lt;- attachVariable(vars = c(&#39;hghinc&#39;), # take the variable hg
 &lt;small&gt;
 Note that the second example overwrites the first one because we are again using **base_ego** as the starting dataset. If we do not want to overwrite it we have to use **data_new** as our starting dataset in Example 2. 
 &lt;/small&gt; 
+---
+
+# Quick tip: Download and match macro data
+&lt;small&gt;
+Example: Get macro level data on average income inflation in Germany and adjust household income.
+
+To do that I will use information the inflation rate in Germany from **Eurostat** and match it to the generated SOEP dataset using the very helpful *eurostat* package.
+
+Other important sources for macro level data are: OECD, World Bank, World inequality Database, Luxembourg Income Study, National statistics agencies like DESTATIS and many more.
+
+Remember that you do not need any specific packages but always can also download the CSV files manually and then import the data using `import_delim()`.  
+&lt;/small&gt; 
+
+```r
+#### Adjusting household income for inflation --&gt; how did the purchasing power change
+
+#for a tutorial on the eurostat package refer to: https://ropengov.github.io/eurostat/articles/eurostat_tutorial.html
+#google for to find the correct table identifier containing inflation rates or search using the eurostat package: 
+# eurostat &lt;- search_eurostat(&quot;HICP&quot;) # alternative: use the build in search function to find vairables
+# attention the search function is case sensitive
+eurodata &lt;- get_eurostat(&quot;prc_hicp_aind&quot;,#name of the eurostat dataset (also URL of the tabl on the Eurostat website)
+                         filters=list(geo=&quot;DE&quot;, # filter the country directly
+                                      unit=&quot;INX_A_AVG&quot;, # filter for one specific measurement unit
+                                      coicop=&quot;CP00&quot;),  # 
+                         type = &quot;label&quot;,
+                         time_format = &quot;num&quot;,
+                         stringsAsFactors = TRUE)
+
+#alternative download table manually and then import the data using read_delim
+#eurodata &lt;- read_delim(filepath, delim=&quot;,&quot;, col_names = TRUE) 
+#you will have to filter the data appropriatly afterwards
+
+base_ego_c_m &lt;- left_join(base_ego_c,eurodata, by = c(&quot;syear&quot;=&quot;time&quot;)) #merging macro data with the person information using the survey year as key 
+
+base_ego_c_m &lt;- base_ego_c_m %&gt;% mutate(hghinc_a = hghinc *(1/(values/100))) # calculate adjusted income using euros from 2015 as baseline
+```
 
 ---
 class: inverse, center, middle
