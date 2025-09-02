@@ -5,7 +5,7 @@
     <link>https://fabiankal.github.io/tag/covid-19/</link>
       <atom:link href="https://fabiankal.github.io/tag/covid-19/index.xml" rel="self" type="application/rss+xml" />
     <description>COVID-19</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2023 Fabian Kalleitner</copyright><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2025 Fabian Kalleitner</copyright><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
       <title>COVID-19</title>
@@ -18,8 +18,10 @@
       <pubDate>Thu, 08 Jul 2021 12:30:30 +0200</pubDate>
       <guid>https://fabiankal.github.io/project/woco/</guid>
       <description>&lt;h2 id=&#34;short-project-description&#34;&gt;Short project description&lt;/h2&gt;
-&lt;p&gt;This project aims to visualize the transformation of work during the COVID-19 pandemic. It cooperates with the Austrian Corona Panel Project and develops survey waves that focus on topics surrounding changes in work itself or work related attitudes and preferences. The main goal of the project is to create a website to provide the public with tools to investigate changes in attitudes, behaviour and preferences themselves via an interactive dashboard.&lt;/p&gt;
-&lt;h2 id=&#34;publication&#34;&gt;Publication&lt;/h2&gt;
+&lt;p&gt;This project explores the transformation of work during the COVID-19 pandemic. In collaboration with the Austrian Corona Panel Project, it developed survey waves focusing on changes in work, as well as work-related attitudes and preferences. The project’s central goal was to create a publicly accessible website that enables users to explore shifts in attitudes, behaviors, and preferences through an interactive dashboard. It was funded by the &lt;a href=&#34;https://wien.arbeiterkammer.at/service/digifonds/gefoerderte-projekte/WoCo.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Digifonds&lt;/a&gt; (AK Vienna) and ran from August 2021 to July 2023.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;Work and Corona project&lt;/em&gt; showcases how academically designed, quantitative social research can be made accessible to the wider public, linking the open science movement with science communication. To this end, we developed a data visualization dashboard, available at &lt;a href=&#34;https://woco.univie.ac.at/dashboard/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;woco.univie.ac.at/dashboard/&lt;/a&gt;, which presents aggregated survey data from the Austrian Corona Panel Project. The complete dashboard code has been published openly, is freely accessible, and is accompanied by detailed &lt;a href=&#34;https://doi.org/10.31219/osf.io/3mcna&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A second pillar of the project focused on analyzing these data to generate insights into the transformation of work and shifts in work-related preferences and beliefs during the pandemic. This work resulted in a series of blog posts for the general public, accessible &lt;a href=&#34;https://woco.univie.ac.at/blog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;, as well as two academic publications: one on public preferences for &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2025/&#34;&gt;social benefits for short-time workers and the unemployed&lt;/a&gt;, and another on the impact of changing labor market risk perceptions on policy demands (preprint can be accessed &lt;a href=&#34;https://ucloud.univie.ac.at/index.php/s/LebDsSkBrtdmDNW&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;publications&#34;&gt;Publications&lt;/h2&gt;
 
 
 
@@ -44,8 +46,8 @@
       Lukas Schlogl&lt;/span&gt;, &lt;span &gt;
       Licia Bobzien&lt;/span&gt;
   &lt;/span&gt;
-  (2024).
-  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2024/&#34;&gt;How much for whom? Explaining preferences for welfare benefits to short-time workers and the unemployed&lt;/a&gt;.
+  (2025).
+  &lt;a href=&#34;https://fabiankal.github.io/publication/kalleitner-2025/&#34;&gt;How much for whom? Explaining preferences for welfare benefits to short-time workers and the unemployed&lt;/a&gt;.
   &lt;em&gt;Journal of European Social Policy&lt;/em&gt;.
   
   &lt;p&gt;
@@ -70,7 +72,7 @@
 
 
 &lt;a href=&#34;#&#34; class=&#34;btn btn-outline-primary btn-page-header btn-sm js-cite-modal&#34;
-        data-filename=&#34;/publication/kalleitner-2024/cite.bib&#34;&gt;
+        data-filename=&#34;/publication/kalleitner-2025/cite.bib&#34;&gt;
   Cite
 &lt;/a&gt;
 

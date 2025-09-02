@@ -5,7 +5,7 @@
     <link>https://fabiankal.github.io/publication-type/2/</link>
       <atom:link href="https://fabiankal.github.io/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
     <description>2</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2023 Fabian Kalleitner</copyright><lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©2025 Fabian Kalleitner</copyright><lastBuildDate>Fri, 01 Aug 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://fabiankal.github.io/media/icon_hud0a34fa3ba2a38ab64a5873eeac97eed_32131_512x512_fill_lanczos_center_2.png</url>
       <title>2</title>
@@ -13,10 +13,18 @@
     </image>
     
     <item>
+      <title>Visualizing Age-Specific Digital Platform Usage in Germany</title>
+      <link>https://fabiankal.github.io/publication/bobzien-2025/</link>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/bobzien-2025/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>How much for whom? Explaining preferences for welfare benefits to short-time workers and the unemployed</title>
-      <link>https://fabiankal.github.io/publication/kalleitner-2024/</link>
-      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://fabiankal.github.io/publication/kalleitner-2024/</guid>
+      <link>https://fabiankal.github.io/publication/kalleitner-2025/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://fabiankal.github.io/publication/kalleitner-2025/</guid>
       <description></description>
     </item>
     
