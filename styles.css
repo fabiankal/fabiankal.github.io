@@ -1,0 +1,127 @@
+/* ── Typography ── */
+body {
+  font-family: "Source Serif 4", "Georgia", serif;
+}
+
+.navbar-brand, h1, h2, h3, h4 {
+  font-family: "Source Sans 3", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* ── Link colors ── */
+a {
+  color: #2596be;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #43b2da;
+  text-decoration: underline;
+}
+
+/* ── Navbar styling ── */
+.navbar {
+  font-family: "Source Sans 3", "Helvetica Neue", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.navbar-brand {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* ── About / Home page ── */
+.quarto-about-trestles .about-entity {
+  border-right: none !important;
+  border-left: none !important;
+  border: none !important;
+  padding-right: 2rem;
+}
+
+.about-link-text {
+  font-size: 0.9rem;
+}
+
+/* ── Publications list ── */
+.publications h2 {
+  border-bottom: 2px solid var(--bs-primary);
+  padding-bottom: 0.25rem;
+  margin-top: 2rem;
+}
+
+/* ── Section separators ── */
+hr {
+  opacity: 0.15;
+  margin: 2rem 0;
+}
+
+/* ── Footer ── */
+.nav-footer {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ── External links ── */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Add vertical separator after CV link */
+.navbar-nav .nav-item:has(a[href*="RLOvdyscwTEiKkM"]) {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding-right: 15px;
+  margin-right: 10px;
+}
+
+/* Adjust separator color for dark mode */
+[data-bs-theme="dark"] .navbar-nav .nav-item:has(a[href*="RLOvdyscwTEiKkM"]) {
+  border-right-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure navbar tools are visible */
+.navbar-nav.navbar-nav-scroll {
+  overflow: visible !important;
+}
+
+.navbar .navbar-nav .nav-item.compact {
+  display: inline-flex !important;
+}
+
+/* Remove border/separator after Hi! heading on about page */
+.about-page h2.no-border {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* Hide hr only after headings with .no-border */
+.no-border + hr {
+  display: none;
+}
+
+/* Remove bottom border on specific headings */
+h2.no-border {
+  border-bottom: none;
+}
+
+/* Half-width centered horizontal rules */
+hr {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Remove vertical divider in trestles about layout */
+.quarto-about-trestles .about-contents {
+  border-left: none !important;
+}
+
+
+h2 {
+  border-bottom: none;
+}
