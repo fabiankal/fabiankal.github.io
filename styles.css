@@ -51,6 +51,51 @@ a:hover {
   margin-top: 2rem;
 }
 
+/* ── Publication links (preprint, code, data) ── */
+.pub-links {
+  margin-left: 0.25em;
+  font-family: "Source Sans 3", "Helvetica Neue", sans-serif;
+  font-size: 0.9em;
+}
+
+.pub-links a {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0.1em 0.6em;
+  margin: 0.1em 0.15em;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+.pub-links a:hover {
+  text-decoration: none;
+  filter: brightness(0.95);
+}
+
+.pub-links a::before {
+  font-family: bootstrap-icons;
+  margin-right: 0.3em;
+  vertical-align: -0.1em;
+}
+
+.pub-links a.preprint { color: #495057; background: #e9ecef; }
+.pub-links a.preprint::before { content: "\f38b"; }
+.pub-links a.code { color: #146c43; background: #d1e7dd; }
+.pub-links a.code::before { content: "\f2c6"; }
+.pub-links a.data { color: #8a4a0b; background: #fbe8cc; }
+.pub-links a.data::before { content: "\f8c4"; }
+.pub-links a.replication { color: #59359a; background: #e2d9f3; }
+.pub-links a.replication::before { content: "\f1c7"; }
+.pub-links a.prereg { color: #0a5f73; background: #cff4fc; }
+.pub-links a.prereg::before { content: "\f28b"; }
+
+body.quarto-dark .pub-links a:hover { filter: brightness(1.15); }
+body.quarto-dark .pub-links a.preprint { color: #dee2e6; background: #3a3f44; }
+body.quarto-dark .pub-links a.code { color: #a3cfbb; background: #0f3d2a; }
+body.quarto-dark .pub-links a.data { color: #f5c98a; background: #4a2f0c; }
+body.quarto-dark .pub-links a.replication { color: #c5b3e6; background: #33244f; }
+body.quarto-dark .pub-links a.prereg { color: #9eeaf9; background: #08404d; }
+
 /* ── Section separators ── */
 hr {
   opacity: 0.15;
